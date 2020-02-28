@@ -1,0 +1,35 @@
+package lesson1
+
+// list any import classes here
+import droolscours.Account;
+import util.OutputDisplay;
+
+//declare any global variables here,  just declare, should  use the method setGlobal on the session when invoke
+global OutputDisplay showResults;
+
+
+rule "first rule"
+	
+	when 
+		//condition
+		Account()
+	then 
+		//action
+		//System.out.println("test");
+		//System.out.println("The account exits");
+		
+		showResults.showText("The account exists");
+
+end
+
+
+rule "second rule"
+	//include attributes such as "salience" here ...
+	when 
+		//condition
+		//Account()
+	then 
+		//actions
+		//System.out.println("Satisfied second rule");
+end
+

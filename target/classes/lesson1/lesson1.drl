@@ -7,6 +7,8 @@ import util.OutputDisplay;
 //declare any global variables here,  just declare, should  use the method setGlobal on the session when invoke
 global OutputDisplay showResults;
 
+global OutputDisplay showResults_2;
+
 
 rule "first rule"
 	
@@ -23,13 +25,15 @@ rule "first rule"
 end
 
 
-rule "second rule"
+rule "Your first Rull revisited AccountingPeriod"
 	//include attributes such as "salience" here ...
 	when 
 		//condition
-		//Account()
+		CashFlow()
 	then 
 		//actions
-		//System.out.println("Satisfied second rule");
+		showResults.showText("The CashFlow exists, inserting an accounting Period");
+		AccountingPeriod newPeriod = new AccountingPeriod();
+		insert(newPeriod);
 end
 

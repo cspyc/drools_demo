@@ -14,6 +14,7 @@ import org.kie.api.runtime.StatelessKieSession;
 import org.kie.api.runtime.rule.FactHandle;
 
 import droolscours.Account;
+import droolscours.CashFlow;
 import util.KnowledgeSessionHelper;
 import util.OutputDisplay;
 
@@ -45,25 +46,25 @@ public class TestLesson1 {
 	}
 	
 	
-	@Test
-	public void testFirstOne() {
-		sessionStateful = KnowledgeSessionHelper
-				.getStatefulKnowledgeSession(kieContainer, "ksessionR");
-		
-		//set global variable
-		OutputDisplay  outputDisplay = new OutputDisplay();
-		sessionStateful.setGlobal("showResults", outputDisplay);
-		
-		Account a = new Account();
-		FactHandle handle = sessionStateful.insert(a);
-		
-		System.out.println("First fire all rules");
-		sessionStateful.fireAllRules();
-		
-		sessionStateful.update(handle, a);
-		System.out.println("Second fire all rules");
-		sessionStateful.fireAllRules();
-	}
+//	@Test
+//	public void testFirstOne() {
+//		sessionStateful = KnowledgeSessionHelper
+//				.getStatefulKnowledgeSession(kieContainer, "ksessionR");
+//		
+//		//set global variable
+//		OutputDisplay  outputDisplay = new OutputDisplay();
+//		sessionStateful.setGlobal("showResults", outputDisplay);
+//		
+//		Account a = new Account();
+//		FactHandle handle = sessionStateful.insert(a);
+//		
+//		System.out.println("First fire all rules");
+//		sessionStateful.fireAllRules();
+//		
+//		sessionStateful.update(handle, a);
+//		System.out.println("Second fire all rules");
+//		sessionStateful.fireAllRules();
+//	}
 	
 	@Test
 	public void testRuleOneFactWithFactAndUsageOfGlobalAndCallBack() {
@@ -103,6 +104,44 @@ public class TestLesson1 {
 			sessionStateful.update(handlea, a);
 			sessionStateful.delete(handlea);
 			sessionStateful.fireAllRules();		
+	}
+	
+	
+	@Test
+	public void testRuleOneFactThatInsertObject() {
+		sessionStateful = KnowledgeSessionHelper
+				.getStatefulKnowledgeSession(kieContainer, "ksessionR");
+		
+		OutputDisplay  outputDisplay = new OutputDisplay();
+		sessionStateful.setGlobal("showResults_2", outputDisplay);
+		
+		sessionStateful.addEventListener(new RuleRuntimeEventListener() {				
+
+				@Override
+				public void objectDeleted(ObjectDeletedEvent event) {
+					System.out.println("Object was retracted \n"
+							+ event.getOldObject().toString());
+					
+				}
+	
+				@Override
+				public void objectInserted(ObjectInsertedEvent event) {
+					System.out.println("Object was inserted \n"
+							+ event.getObject().toString());
+					
+				}
+	
+				@Override
+				public void objectUpdated(ObjectUpdatedEvent event) {
+					System.out.println("Object was updated \n"
+							+ event.getObject().toString());
+					
+				}
+			});
+			
+			CashFlow a = new CashFlow();
+			FactHandle handlea = sessionStateful.insert(a);
+			sessionStateful.fireAllRules();
 	}
 	
 	

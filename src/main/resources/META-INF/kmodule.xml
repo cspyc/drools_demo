@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 	<kbase name="rules" packages="com.sample.rules">
-        <ksession name="ksession-rules"/>
-    </kbase>
-  
-  	<kbase name="rules1" packages="lesson1">
-        <ksession name="ksessionR"/>
-    </kbase>
+		<ksession name="ksession-rules" />
+	</kbase>
+
+	<kbase name="rules1" packages="lesson1">
+		<ksession name="ksessionR" />
+	</kbase>
+
+	<kbase name="rules2" packages="lesson2">
+		<ksession name="ksession-lesson2" />
+	</kbase>
+
+	<kbase name="rules3" packages="lesson3">
+		<ksession name="ksession-lesson3" />
+	</kbase>
+
+	<kbase name="rules4" packages="lesson4">
+		<ksession name="ksession-lesson4" />
+	</kbase>
+	
+	<kbase name="rules4a" packages="lesson4a">
+		<ksession name="ksession-lesson4a" />
+	</kbase>
+	
 </kmodule>

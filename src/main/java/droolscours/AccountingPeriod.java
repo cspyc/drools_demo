@@ -4,24 +4,37 @@ import java.util.Date;
 
 public class AccountingPeriod {
 
-	private Date start;
-	private Date end;
-	public Date getStart() {
-		return start;
+	private Date startDate;
+	private Date endDate;
+
+	public Date getStartDate() {
+		return startDate;
 	}
-	public void setStart(Date start) {
-		this.start = start;
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
-	public Date getEnd() {
-		return end;
+
+	public Date getEndDate() {
+		return endDate;
 	}
-	public void setEnd(Date end) {
-		this.end = end;
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
+
+	public AccountingPeriod() {
+	}
+
+	public AccountingPeriod(Date startDate, Date endDate) {
+		super();
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
 	@Override
 	public String toString() {
-		return "AccountingPeriod [start=" + start + ", end=" + end + "]";
+		return "AccountingPeriod [start=" + startDate + ", end=" + endDate + "]";
 	}
-	
-	
+
 }

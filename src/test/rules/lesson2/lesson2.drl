@@ -1,0 +1,45 @@
+package lesson2
+
+import droolscours.AccountingPeriod;
+import droolscours.CashFlow;
+import droolscours.Account;
+import util.OutputDisplay;
+
+
+global OutputDisplay showResults;
+
+
+
+rule "Your First Rule revisited again"
+
+    when
+        Account(  )
+    then
+        showResults.showText("The account exists");
+end
+
+
+rule "Credit rule"
+	
+	when
+		$cash:CashFlow($aDate:Date, $accno:accountNo,type == CashFlow.CREDIT)
+		$acc:Account(accountNo == $accno)
+		$period:AccountingPeriod(startDate <= $aDate && endDate >= $aDate)
+	then
+		$acc.setBalance($acc.getBalance() + $cash.getAmount());
+		showResults.showText("Account no "+$acc.getAccountNo()+ " has now a balance of "+$acc.getBalance());
+end
+
+
+rule "Debit rule"
+	
+	when
+		$cash: CashFlow($aDate:Date,$no:accountNo,type==CashFlow.DEBIT)
+		$acc:Account(accountNo == $no)
+		$period:AccountingPeriod(startDate <= $aDate && endDate >= $aDate)
+	then
+		$acc.setBalance($acc.getBalance()-$cash.getAmount());
+		showResults.showText("Account no :" + $acc.getAccountNo() 
+						+ "has now a balnace of " + $acc.getBalance());
+end
+

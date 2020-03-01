@@ -1,0 +1,44 @@
+package lesson3
+
+import droolscours.AccountingPeriod;
+import droolscours.CashFlow;
+import droolscours.Account;
+import droolscours.PrivateAccount
+import droolscours.Customer
+import droolscours.service.CustomerService;
+import util.OutputDisplay;
+
+import java.util.ArrayList;
+
+
+global OutputDisplay showResult;
+global CustomerService serviceCustomer;
+
+
+
+rule "Credit and Debit Rule"
+    when
+        $c : Account( $acc : accountNo )
+        $p : AccountingPeriod ($sDate : startDate ,$eDate : endDate )
+        
+        $totalCredit : Number( doubleValue > 100 )
+             from accumulate( CashFlow( type ==CashFlow.CREDIT,$value : amount, date >= $sDate && date  <= $eDate,accountNo == $acc ),
+                              init( double total = 0; ),
+                              action( total += $value; ),
+                              reverse( total -= $value; ),
+                              result( total ) )
+                              
+        $totalDebit : Number( doubleValue > 100 )
+                     from accumulate( CashFlow( type ==CashFlow.DEBIT,$value : amount, date >= $sDate && date  <= $eDate,accountNo == $acc ),
+                              init( double total = 0; ),
+                              action( total += $value; ),
+                              reverse( total -= $value; ),
+                              result( total ) )
+
+    then
+        showResult.showText(" Found "+$totalCredit+" as a credit");
+        showResult.showText(" Found "+$totalDebit+" as a debit");
+end
+
+
+

@@ -18,6 +18,13 @@ public class Account {
 		this.balance = balance;
 	}
 	
+	public Account() {}
+	
+	public Account(long accountNo,double balance) {
+		this.accountNo = accountNo;
+		this.balance = balance;
+	}
+	
 	@Override
 	public String toString() {
 		return "Account [accountNo=" + accountNo + ", balance=" + balance + "]";

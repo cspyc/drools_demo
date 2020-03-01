@@ -9,7 +9,7 @@ import util.KnowledgeSessionHelper;
 public class FirstTryTest {
 
 	
-	//´´½¨fixture
+	//åˆ›å»ºfixture
 	
 	StatelessKieSession sessionStateless = null;
 	KieSession sessionStateful = null;

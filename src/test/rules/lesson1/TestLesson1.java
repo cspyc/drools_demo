@@ -65,7 +65,7 @@ public class TestLesson1 {
 //		System.out.println("Second fire all rules");
 //		sessionStateful.fireAllRules();
 //	}
-	
+//	
 	@Test
 	public void testRuleOneFactWithFactAndUsageOfGlobalAndCallBack() {
 		sessionStateful = KnowledgeSessionHelper
@@ -112,8 +112,8 @@ public class TestLesson1 {
 		sessionStateful = KnowledgeSessionHelper
 				.getStatefulKnowledgeSession(kieContainer, "ksessionR");
 		
-		OutputDisplay  outputDisplay = new OutputDisplay();
-		sessionStateful.setGlobal("showResults_2", outputDisplay);
+		OutputDisplay  outputDisplay_2 = new OutputDisplay();
+		sessionStateful.setGlobal("showResults_2", outputDisplay_2);
 		
 		sessionStateful.addEventListener(new RuleRuntimeEventListener() {				
 

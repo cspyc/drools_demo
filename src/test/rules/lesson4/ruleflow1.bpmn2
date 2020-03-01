@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="RF1" name="RuleFlow1" tns:packageName="lesson4" >
+
+    <extensionElements>
+     <tns:import name="org.kie.api.runtime.process.CaseAssignment" />
+     <tns:import name="org.kie.api.runtime.process.CaseData" />
+    </extensionElements>
+    <!-- nodes -->
+    <startEvent id="148eae82-574c-44a7-a2c7-25f64e1a0dc6" name="Start"  isInterrupting="false">
+    </startEvent>
+    <businessRuleTask id="f6b19911-ab70-435f-9743-e25265493427" name="Verify" g:ruleFlowGroup="Group1" 
+ implementation="http://www.jboss.org/drools/rule" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </businessRuleTask>
+    <businessRuleTask id="507a7ad9-1015-4c37-a8f1-b2ce35fd91ce" name="Calculation" g:ruleFlowGroup="Group2" 
+ implementation="http://www.jboss.org/drools/rule" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </businessRuleTask>
+    <endEvent id="3f32262f-1ec8-4336-a9de-58ab26308c7a" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+
+    <!-- connections -->
+    <sequenceFlow id="148eae82-574c-44a7-a2c7-25f64e1a0dc6-f6b19911-ab70-435f-9743-e25265493427" sourceRef="148eae82-574c-44a7-a2c7-25f64e1a0dc6" targetRef="f6b19911-ab70-435f-9743-e25265493427" />
+    <sequenceFlow id="f6b19911-ab70-435f-9743-e25265493427-507a7ad9-1015-4c37-a8f1-b2ce35fd91ce" sourceRef="f6b19911-ab70-435f-9743-e25265493427" targetRef="507a7ad9-1015-4c37-a8f1-b2ce35fd91ce" />
+    <sequenceFlow id="507a7ad9-1015-4c37-a8f1-b2ce35fd91ce-3f32262f-1ec8-4336-a9de-58ab26308c7a" sourceRef="507a7ad9-1015-4c37-a8f1-b2ce35fd91ce" targetRef="3f32262f-1ec8-4336-a9de-58ab26308c7a" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="RF1" >
+      <bpmndi:BPMNShape bpmnElement="148eae82-574c-44a7-a2c7-25f64e1a0dc6" >
+        <dc:Bounds x="37" y="196" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="f6b19911-ab70-435f-9743-e25265493427" >
+        <dc:Bounds x="139" y="194" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="507a7ad9-1015-4c37-a8f1-b2ce35fd91ce" >
+        <dc:Bounds x="254" y="195" width="117" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="3f32262f-1ec8-4336-a9de-58ab26308c7a" >
+        <dc:Bounds x="433" y="198" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="148eae82-574c-44a7-a2c7-25f64e1a0dc6-f6b19911-ab70-435f-9743-e25265493427" >
+        <di:waypoint x="61" y="220" />
+        <di:waypoint x="179" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="f6b19911-ab70-435f-9743-e25265493427-507a7ad9-1015-4c37-a8f1-b2ce35fd91ce" >
+        <di:waypoint x="179" y="218" />
+        <di:waypoint x="312" y="219" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="507a7ad9-1015-4c37-a8f1-b2ce35fd91ce-3f32262f-1ec8-4336-a9de-58ab26308c7a" >
+        <di:waypoint x="312" y="219" />
+        <di:waypoint x="457" y="222" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

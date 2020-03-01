@@ -3,6 +3,8 @@ package lesson1
 // list any import classes here
 import droolscours.Account;
 import util.OutputDisplay;
+import droolscours.CashFlow;
+import droolscours.AccountingPeriod;
 
 //declare any global variables here,  just declare, should  use the method setGlobal on the session when invoke
 global OutputDisplay showResults;
@@ -32,8 +34,15 @@ rule "Your first Rull revisited AccountingPeriod"
 		CashFlow()
 	then 
 		//actions
-		showResults.showText("The CashFlow exists, inserting an accounting Period");
+		showResults_2.showText("The CashFlow exists, inserting an accounting Period");
 		AccountingPeriod newPeriod = new AccountingPeriod();
 		insert(newPeriod);
+end
+
+rule "Rule on AccountingPeriod that are inserting"
+	when 
+		AccountingPeriod()
+	then
+		showResults_2.showText("Accounting period exists");
 end
 
